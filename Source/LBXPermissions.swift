@@ -13,7 +13,7 @@ import AssetsLibrary
 
 
 
-class LBXPermissions: NSObject {
+open class LBXPermissions: NSObject {
 
     //MARK: ----获取相册权限
     static func authorizePhotoWith(comletion: @escaping (Bool) -> Void) {
@@ -37,7 +37,7 @@ class LBXPermissions: NSObject {
     }
     
     //MARK: ---相机权限
-    static func authorizeCameraWith(completion: @escaping (Bool) -> Void) {
+    open static func authorizeCameraWith(completion: @escaping (Bool) -> Void) {
         let granted = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         switch granted {
         case .authorized:
@@ -58,8 +58,8 @@ class LBXPermissions: NSObject {
     }
     
     //MARK: 跳转到APP系统设置权限界面
-    static func jumpToSystemPrivacySetting() {
-        guard let appSetting = URL(string: UIApplication.openSettingsURLString) else {
+    open static func jumpToSystemPrivacySetting() {
+        guard let appSetting = URL(string: UIApplicationOpenSettingsURLString) else {
             return
         }
         if #available(iOS 10, *) {
