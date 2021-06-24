@@ -347,7 +347,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
 
         // 上色
         let colorFilter = CIFilter(name: "CIFalseColor",
-                                   parameters: [
+                                   withInputParameters: [
                                        "inputImage": qrFilter!.outputImage!,
                                        "inputColor0": CIColor(cgColor: qrColor.cgColor),
                                        "inputColor1": CIColor(cgColor: bkColor.cgColor),
