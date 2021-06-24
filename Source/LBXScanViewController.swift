@@ -165,11 +165,11 @@ open class LBXScanViewController: UIViewController {
 extension LBXScanViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: -----相册选择图片识别二维码 （条形码没有找到系统方法）
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         picker.dismiss(animated: true, completion: nil)
         
-        let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-        let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
+        let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         guard let image = editedImage ?? originalImage else {
             showMsg(title: nil, message: NSLocalizedString("Identify failed", comment: "Identify failed"))
             return
